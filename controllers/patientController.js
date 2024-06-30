@@ -5,16 +5,14 @@ const errorHandler = require('../utils/errorHandler');
 // POST /api/v1/patients
 const addPatient = async (req, res) => {
   try {
-    const { name, contactNumber, address } = req.body;
-    const newPatient = new Patient({ name, contactNumber, address, bill: null }); // Set bill to null initially
+    const { name, contactNumber, address,doctorId } = req.body;
+    const newPatient = new Patient({ name, doctorId, contactNumber, address, bill: null }); // Set bill to null initially
     const patient = await newPatient.save();
     res.status(201).json(patient);
   } catch (err) {
     errorHandler(err, res);
   }
 };
-
-
 
 // GET /api/v1/patients
 const getAllPatients = async (req, res) => {

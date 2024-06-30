@@ -13,6 +13,11 @@ const PatientSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please add an address'],
   },
+  doctorId: {
+    type: String,
+    required: [true, 'Please add an doctorId'],
+  },
+
   status: {
     type: String,
     enum: ['in', 'out'],
